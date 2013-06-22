@@ -1,0 +1,16 @@
+{
+	"name": "modulargaming/installer",
+	"type": "composer-installer",
+	"license": "BSD-3-Clause",
+	"description": "Composer installer for the modulargaming project",
+	"keywords": [
+		"installer", "modulargaming", "kohana"
+	],
+	"homepage": "https://github.com/modulargaming/installer",
+	"autoload": {
+		"psr-0": { "ModularGaming\\Composer\\": "src/" }
+	},
+	"extra": {
+        "class": "\\ModularGaming\\Composer\\ModuleInstaller"
+    }
+}
