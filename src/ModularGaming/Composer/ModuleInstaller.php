@@ -17,7 +17,20 @@ class ModuleInstaller extends LibraryInstaller {
 			list($vendor, $name) = explode('/', $name);
 		}
 
-		return 'modulargaming/'.$name;
+		if ($package->getType() === 'modulargaming-module') {
+			return 'modulargaming/'.$name;
+		}
+
+		if ($package->getType() === 'modulargaming-theme') {
+
+			// Remove theme- prefix if it exists.
+			if (substr($name, 0, 6) === 'theme-') {
+				$name = substr($name, 6);
+			}
+
+			return 'themes/'.$name;
+		}
+
 	}
 
 	/**
@@ -25,7 +38,7 @@ class ModuleInstaller extends LibraryInstaller {
 	 */
 	public function supports($packageType)
 	{
-		return 'modulargaming-module' === $packageType;
+		return in_array($packageType, array('modulargaming-module', 'modulargaming-theme'));
 	}
 
 }
